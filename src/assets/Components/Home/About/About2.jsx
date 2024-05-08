@@ -76,7 +76,9 @@ const About2 = () => {
                         allProduct.map(product => (
                             <div key={product._id} className=' flex flex-col justify-between shadow rounded-lg relative'>
                                 <div>
-                                    <img className=" p-5 w-full object-cover" src={product.img} alt="" />
+                                   <div className="w-48 mx-auto">
+                                   <img className=" p-5 w-full object-cover" src={product.img} alt="" />
+                                   </div>
                                     <div className='product-info ml-5 space-y-4 pb-10'>
                                         <h6 className='product-name text-2xl font-bold text-red-700'>{product.name}</h6>
                                         <p className="text-xl font-medium">Price: ${product.price}</p>
@@ -85,7 +87,7 @@ const About2 = () => {
                                     </div>
                                 </div>
                                 <div className="">
-                                    <button className='btn flex rounded-b-lg  btn-secondary w-full rounded-none  border-b-[10px] hover:border-yellow-600 border-yellow-600 '>
+                                    <button className='btn flex rounded-b-lg  btn-cart text-xl w-full rounded-none  border-b-[10px] hover:border-yellow-600 border-yellow-600 '>
                                         Add to Cart
 
                                     </button>
@@ -106,11 +108,11 @@ const About2 = () => {
                     }
                     <button onClick={handelNext} className="btn  mr-3 hover:text-black  h-6 bg-[#F100B7] text-xl text-white">Next</button>
                     <select onChange={handelItemPerpage} className={" btn-outline rounded-md h-10 font-bold bg-[#F100B7] text-white w-14 px-2"} value={itemparpage} name="" id="">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="40">40</option>
+                        <option value="6">6</option>
+                        <option value="12">12</option>
+                        <option value="26">26</option>
+                        <option value="36">36</option>
+                        <option value="48">48</option>
                     </select>
                 </div>
             </div>
