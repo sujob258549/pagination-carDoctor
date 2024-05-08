@@ -1,0 +1,18 @@
+.navmanu a{
+    padding: 10px 20px;
+    background-color: red;
+    color: aliceblue;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
+
+.navmanu a .active{
+   border-bottom: 2px solid black;
+}
+
+.shadow{
+    box-shadow: 1px 1px 10px;
+}
