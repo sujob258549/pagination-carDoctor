@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import { getAuth } from "firebase/auth";
 import app from "./firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
+import axios from "axios";
 
 
 
@@ -26,10 +27,24 @@ const AuthContext = ({ children }) => {
     }
 
     const unsubsCribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
 
+        if (user) {
             setuser(user)
+            const userEmail = user.email;
+            const currentUser = { email: userEmail }
             console.log(user)
+            if (user) {
+                axios.post('http://localhost:5000/jwt', currentUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("response", res.data)
+                    })
+            }
+            else{
+                axios.post('http://localhost:5000/logout', currentUser, { withCredentials: true }) 
+                .then(res => {
+                    console.log("response", res.data)
+                })
+            }
 
         } else {
             setuser(null)

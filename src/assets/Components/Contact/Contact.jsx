@@ -2,9 +2,14 @@ import axios from "axios";
 import Footer from "../Shard/Footer";
 import Navber from "../Shard/Navber";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { CreatAuth } from "../Firebase/AuthContext";
 
 
 const Contact = () => {
+
+    const {user} = useContext(CreatAuth);
+    console.log(user);
 
     const handelcontactFrom = e => {
         e.preventDefault();
@@ -14,7 +19,7 @@ const Contact = () => {
         const textarea = e.target.textarea.value;
     const contactInformation = {name, email, number, textarea}
         console.log(name, email, number, textarea)
-        axios.post('http://localhost:5000/contact', contactInformation)
+        axios.post('http://localhost:5000/contact', contactInformation,{withCredentials:true})
         .then(res => {
             console.log(res.data)
             if(res.data.insertedId){
@@ -102,12 +107,12 @@ const Contact = () => {
                                 <form onSubmit={handelcontactFrom} className="mt-4">
                                     <div className="flex-1">
                                         <label className="block mb-2  text-sm ">Full Name</label>
-                                        <input name="name" type="text" placeholder="Enter Your name" className="block w-full px-5 py-3 mt-2  bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                                        <input value={user?.displayName} name="name" type="text" placeholder="Enter Your name" className="block w-full px-5 py-3 mt-2  bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                                     </div>
 
                                     <div className="flex-1 mt-6">
                                         <label className="block mb-2 text-sm ">Email address</label>
-                                        <input name="email" type="email" placeholder="Enter your Email address" className="block w-full px-5 py-3 mt-2  bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                                        <input value={user?.email} name="email" type="email" placeholder="Enter your Email address" className="block w-full px-5 py-3 mt-2  bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                                     </div>
                                     <div className="flex-1 mt-6">
                                         <label className="block mb-2 text-sm ">MObile Number</label>

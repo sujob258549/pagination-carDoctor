@@ -14,8 +14,8 @@ const Navber = () => {
         <NavLink to={'/about'}>About</NavLink>
         <NavLink>Services</NavLink>
         <NavLink to={'/problem'}>Problem </NavLink>
-        <NavLink to={'/contact'}>Contact</NavLink>
-        {/* <NavLink to={'/signup'}>Sing Up</NavLink> */}
+        <NavLink to={'/contact'}>Contact</NavLink> 
+         {/* <NavLink to={'/signup'}>Sing Up</NavLink> */}
         {
             user ?
                 <NavLink className='' onClick={() => signout()}>Sing Out</NavLink>

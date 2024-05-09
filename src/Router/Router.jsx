@@ -6,6 +6,7 @@ import Signup from "../assets/Components/SigninAndSignUp/Signup";
 import About2 from "../assets/Components/Home/About/About2";
 import Contact from "../assets/Components/Contact/Contact";
 import Contactinfo from "../assets/Components/Contact/Contactinfo";
+import PrivateRouter from "../assets/Components/privateRoute/PrivateRouter";
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/problem',
-                element: <Contactinfo></Contactinfo>,
+                element: <PrivateRouter><Contactinfo></Contactinfo></PrivateRouter>,
                 loader: ()=> fetch('http://localhost:5000/contact')
                
             }

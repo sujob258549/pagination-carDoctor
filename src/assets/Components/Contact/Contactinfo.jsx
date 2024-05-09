@@ -2,18 +2,28 @@ import { FaDeleteLeft } from "react-icons/fa6";
 import Navber from "../Shard/Navber";
 import { Link, useLoaderData } from "react-router-dom";
 import { TfiFiles } from "react-icons/tfi";
+import { useContext, useEffect, useState } from "react";
+import { CreatAuth } from "../Firebase/AuthContext";
 
 
 const Contactinfo = () => {
-    const datas = useLoaderData()
+    const {user} = useContext(CreatAuth)
+    const [datas , setDatas] = useState([])
+    const userdatas = useLoaderData()
+    useEffect(()=> {
+        const refineDatas = userdatas.filter(data => data.email === user.email)
+        setDatas(refineDatas)
+    }, [userdatas])
+    
+   
     return (
         <div>
             <Navber></Navber>
-            <section className="container px-4 mx-auto">
+            <section className="container px-4 mx-auto py-20">
                 <div className="flex items-center gap-x-3">
                     <h2 className="text-lg font-medium text-gray-800 ">Comments</h2>
 
-                    <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  dark:text-blue-400">100 users</span>
+                    <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full  dark:text-blue-400">Comments {datas.length}</span>
                 </div>
 
                 <div className="flex flex-col mt-6">
