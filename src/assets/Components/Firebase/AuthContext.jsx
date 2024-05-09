@@ -29,6 +29,7 @@ const AuthContext = ({ children }) => {
         if (user) {
 
             setuser(user)
+            console.log(user)
 
         } else {
             setuser(null)
@@ -62,7 +63,8 @@ const AuthContext = ({ children }) => {
         ligineUser,
         goodleSignIn,
         signout,
-        upadateprofile
+        upadateprofile,
+        setuser
     }
     return (
         <CreatAuth.Provider value={authinfo}>

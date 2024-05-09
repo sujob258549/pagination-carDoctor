@@ -6,23 +6,24 @@ import { CreatAuth } from '../Firebase/AuthContext';
 
 const Navber = () => {
 
-    const {signout , user} = useContext(CreatAuth)
+    const { signout, user } = useContext(CreatAuth)
 
     const navber = <>
 
         <NavLink to={'/'}>Home</NavLink>
         <NavLink to={'/about'}>About</NavLink>
         <NavLink>Services</NavLink>
-        <NavLink>Blog</NavLink>
-        <NavLink>Contact</NavLink>
+        <NavLink to={'/problem'}>Problem </NavLink>
+        <NavLink to={'/contact'}>Contact</NavLink>
         {/* <NavLink to={'/signup'}>Sing Up</NavLink> */}
-       {
-        user ?  
-        <NavLink className='' onClick={()=>signout()}>Sing Out</NavLink> 
-        : 
-        <NavLink to={'/signin'}>Sing In</NavLink> 
-       
-       }
+        {
+            user ?
+                <NavLink className='' onClick={() => signout()}>Sing Out</NavLink>
+
+                :
+                <NavLink to={'/signin'}>Sing In</NavLink>
+
+        }
 
     </>
     return (
@@ -50,6 +51,14 @@ const Navber = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
+                        {
+                            user?.photoURL && 
+                            <div className="avatar online">
+                                <div className="w-16  border-4 border-black rounded-full">
+                                    <img referrerPolicy='no-referrer' src={user?.photoURL} />
+                                </div>
+                            </div>
+                        }
                         <a className="btn btn-outline border border-[#FF3811] text-[18px] font-semibold text-[#FF3811]">Appointment</a>
                     </div>
                 </div>

@@ -76,9 +76,7 @@ const About2 = () => {
                         allProduct.map(product => (
                             <div key={product._id} className=' flex flex-col justify-between shadow rounded-lg relative'>
                                 <div>
-                                   <div className="w-48 mx-auto">
-                                   <img className=" p-5 w-full object-cover" src={product.img} alt="" />
-                                   </div>
+                                    <img className=" p-5 w-full object-cover" src={product.img} alt="" />
                                     <div className='product-info ml-5 space-y-4 pb-10'>
                                         <h6 className='product-name text-2xl font-bold text-red-700'>{product.name}</h6>
                                         <p className="text-xl font-medium">Price: ${product.price}</p>
