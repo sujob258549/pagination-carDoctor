@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 
 
 const About2 = () => {
-    const [allProduct , setAlloriduct] = useState([])
+    const [allProduct, setAlloriduct] = useState([])
     console.log(allProduct)
 
     // pagination
     const [totalCount, setTotalCount] = useState();
+    const [sort, setSort] = useState('')
     // const [totalpages , settotalpages]= useState()
     const [itemparpage, setitemparpage] = useState(10);
     const [currentpage, setcorrentpage] = useState(0)
@@ -51,10 +52,10 @@ const About2 = () => {
 
     // all product
     useEffect(() => {
-        fetch(`http://localhost:5000/allProduct?page=${currentpage}&size=${itemparpage}`)
+        fetch(`http://localhost:5000/allProduct?page=${currentpage}&size=${itemparpage}&sort=${sort}`)
             .then(res => res.json())
             .then(data => setAlloriduct(data))
-    }, [currentpage, currentpage])
+    }, [currentpage, currentpage, sort])
 
     const handelNext = () => {
         if (currentpage < pages.length - 1) {
@@ -71,6 +72,16 @@ const About2 = () => {
         <div>
             <Navber></Navber>
             <div className="w-[90%] mx-auto py-10 md:py-20">
+                <div className="flex justify-center pb-10 md:pb-20">
+                    <select onChange={e => {
+                        setSort(e.target.value)
+                        setcorrentpage(0)
+                    }} name="sort" id="sort" className="text-xl select select-error w-full max-w-xs">
+                        <option className="text-xl" value='' disabled selected>Castom Order</option>
+                        <option className="text-xl" value={'assan'}>Assanding Order</option>
+                        <option className="text-xl" value={'dissan'}>Dessanding Order</option>
+                    </select>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
                     {
                         allProduct.map(product => (

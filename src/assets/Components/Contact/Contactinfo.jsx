@@ -10,6 +10,7 @@ const Contactinfo = () => {
     const {user} = useContext(CreatAuth)
     const [datas , setDatas] = useState([])
     const userdatas = useLoaderData()
+    console.log(userdatas);
     useEffect(()=> {
         const refineDatas = userdatas.filter(data => data.email === user.email)
         setDatas(refineDatas)

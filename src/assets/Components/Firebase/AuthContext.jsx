@@ -32,7 +32,6 @@ const AuthContext = ({ children }) => {
             setuser(user)
             const userEmail = user.email;
             const currentUser = { email: userEmail }
-            console.log(user)
             if (user) {
                 axios.post('http://localhost:5000/jwt', currentUser, { withCredentials: true })
                     .then(res => {
