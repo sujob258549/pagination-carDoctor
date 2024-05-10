@@ -30,6 +30,7 @@ const AuthContext = ({ children }) => {
 
         if (user) {
             setuser(user)
+            console.log(user);
             const userEmail = user.email;
             const currentUser = { email: userEmail }
             if (user) {
